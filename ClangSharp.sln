@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp", "ClangSharp\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharpPInvokeGenerator", "ClangSharpPInvokeGenerator\ClangSharpPInvokeGenerator.csproj", "{67CDB80E-6568-4727-B481-AC943DE4698B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp.Test", "ClangSharp.Test\ClangSharp.Test.csproj", "{0D6FD821-D7CA-4BC0-936E-BBDAA7BFCD0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp.Test", "ClangSharp.Test\ClangSharp.Test.csproj", "{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D6FD821-D7CA-4BC0-936E-BBDAA7BFCD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D6FD821-D7CA-4BC0-936E-BBDAA7BFCD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D6FD821-D7CA-4BC0-936E-BBDAA7BFCD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D6FD821-D7CA-4BC0-936E-BBDAA7BFCD0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

@@ -1,12 +1,13 @@
 using System;
 using System.Runtime.InteropServices;
-using Xunit;
+using NUnit.Framework;
 
 namespace ClangSharp.Test
 {
+		[TestFixture]
     public class ModuleMapDescriptor
     {
-        [Fact]
+        [Test]
         public void Basic()
         {
             var contents =
@@ -26,7 +27,7 @@ namespace ClangSharp.Test
             uint bufSize = 0;
             clang.ModuleMapDescriptor_writeToBuffer(mmd, 0, out bufPtr, out bufSize);
             var bufStr = Marshal.PtrToStringAnsi(bufPtr, (int)bufSize);
-            Assert.Equal(contents, bufStr);
+            Assert.AreEqual(contents, bufStr);
             clang.free(bufPtr);
             clang.ModuleMapDescriptor_dispose(mmd);
         }

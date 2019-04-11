@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
-using Xunit;
+using NUnit.Framework;
 
 namespace ClangSharp.Test
 {
@@ -9,6 +9,7 @@ namespace ClangSharp.Test
     //       with either "C:" (Windows) or nothing (*nix) so that clang understands the path.
     //       (Technically, /a/path/like/this is a path relative to the root of the current drive
     //        on Windows, but clang doesn't seem to support this)
+		[TestFixture]
     public class VirtualFileOverlay
     {
         class TestVFO : IDisposable
@@ -33,7 +34,7 @@ namespace ClangSharp.Test
                 rPath = Fix(rPath);
 
                 var err = clang.VirtualFileOverlay_addFileMapping(VFO, vPath, rPath);
-                Assert.Equal(CXErrorCode.CXError_Success, err);
+                Assert.AreEqual(CXErrorCode.CXError_Success, err);
             }
 
             public void MapError(string vPath, string rPath, CXErrorCode expErr)
@@ -42,7 +43,7 @@ namespace ClangSharp.Test
                 rPath = Fix(rPath);
 
                 var err = clang.VirtualFileOverlay_addFileMapping(VFO, vPath, rPath);
-                Assert.Equal(expErr, err);
+                Assert.AreEqual(expErr, err);
             }
 
             private string Fix(string text)
@@ -75,7 +76,7 @@ namespace ClangSharp.Test
                     uint bufSize = 0;
                     clang.VirtualFileOverlay_writeToBuffer(VFO, 0, out bufPtr, out bufSize);
                     var bufStr = Marshal.PtrToStringAnsi(bufPtr, (int)bufSize);
-                    Assert.Equal(Contents, bufStr);
+                    Assert.AreEqual(Contents, bufStr);
                     clang.free(bufPtr);
                 }
 
@@ -85,7 +86,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void Basic()
         {
             var contents =
@@ -112,7 +113,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void Unicode()
         {
             var contents =
@@ -139,7 +140,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void InvalidArgs()
         {
             using (TestVFO T = new TestVFO(null))
@@ -149,7 +150,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void RemapDirectories()
         {
             var contents =
@@ -206,7 +207,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void CaseInsensitive()
         {
             var contents =
@@ -235,7 +236,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void SharedPrefix()
         {
             var contents =
@@ -292,7 +293,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void AdjacentDirectory()
         {
             var contents =
@@ -343,7 +344,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void TopLevel()
         {
             var contents =
@@ -370,7 +371,7 @@ namespace ClangSharp.Test
             }
         }
 
-        [Fact]
+        [Test]
         public void Empty()
         {
             var contents =
