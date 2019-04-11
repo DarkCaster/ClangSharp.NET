@@ -9,7 +9,7 @@ namespace ClangSharp.Test
     //       with either "C:" (Windows) or nothing (*nix) so that clang understands the path.
     //       (Technically, /a/path/like/this is a path relative to the root of the current drive
     //        on Windows, but clang doesn't seem to support this)
-		[TestFixture]
+    [TestFixture]
     public class VirtualFileOverlay
     {
         class TestVFO : IDisposable

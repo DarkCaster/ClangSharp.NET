@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace ClangSharp.Test
 {
-		[TestFixture]
+    [TestFixture]
     public class ModuleMapDescriptor
     {
         [Test]
