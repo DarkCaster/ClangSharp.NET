@@ -1,16 +1,13 @@
 using System;
 using System.IO;
-using Xunit;
+using NUnit.Framework;
 
 namespace ClangSharp.Test
 {
     // This is not ported from libclangtest but instead created to test Unicode stuff
+    [TestFixture]
     public class TranslationUnit
     {
-        [Theory]
-        [InlineData("basic")]
-        [InlineData("example with spaces")]
-        [InlineData("♫")]
         public void Basic(string name)
         {
             // Create a unique directory
@@ -29,12 +26,30 @@ namespace ClangSharp.Test
                 var clangFileName = clang.getFileName(clangFile);
                 var clangFileNameString = clang.getCString(clangFileName);
 
-                Assert.Equal(file.FullName, clangFileNameString);
+                Assert.AreEqual(file.FullName, clangFileNameString);
             }
             finally
             {
                 Directory.Delete(dir, true);
             }
+        }
+
+        [Test]
+        public void Test1()
+        {
+            Basic("basic");
+        }
+
+        [Test]
+        public void Test2()
+        {
+            Basic("example with spaces");
+        }
+
+        [Test]
+        public void Test3()
+        {
+            Basic("♫");
         }
     }
 }
