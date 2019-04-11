@@ -1,27 +1,54 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\ClangSharp\ClangSharp.csproj" />
-  </ItemGroup>
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67CDB80E-6568-4727-B481-AC943DE4698B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>ClangSharpPInvokeGenerator</RootNamespace>
+    <AssemblyName>ClangSharpPInvokeGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <CodePage>65001</CodePage>
+    <StartupObject>ClangSharpPInvokeGenerator.Program</StartupObject>
   </PropertyGroup>
-
-  <!-- libclang name, unlikely to need overriding -->
-  <PropertyGroup Condition="'$(LibClangName)' == ''">
-    <LibClangName>libclang</LibClangName>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG; TRACE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
-
-  <!-- Auto-detect LLVM... more or less -->
-  <PropertyGroup Condition="'$(LLVMIncludePath)' == ''">
-    <LLVMIncludePath Condition="'$(OS)' == 'Windows_NT'">C:\Program Files\LLVM\include</LLVMIncludePath>
-    <LLVMIncludePath Condition="'$(OS)' != 'Windows_NT'">/usr/lib/llvm-6.0/include</LLVMIncludePath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
-
-  <Target Name="GenerateClangSharp">
-    <Exec Command="dotnet run --m clang --p clang_ --namespace ClangSharp --output ../ClangSharp/Generated.cs --libraryPath $(LibClangName) --include $(LLVMIncludePath) --file $(LLVMIncludePath)/clang-c/Index.h --file $(LLVMIncludePath)/clang-c/CXString.h --file $(LLVMIncludePath)/clang-c/Documentation.h --file $(LLVMIncludePath)/clang-c/CXErrorCode.h --file $(LLVMIncludePath)/clang-c/BuildSystem.h --file $(LLVMIncludePath)/clang-c/CXCompilationDatabase.h --excludeFunctions clang_index_getClientEntity,clang_index_setClientEntity,clang_createTranslationUnitFromSourceFile,clang_parseTranslationUnit,clang_parseTranslationUnit2,clang_parseTranslationUnit2FullArgv,clang_reparseTranslationUnit,clang_codeCompleteAt,clang_indexSourceFile,clang_indexSourceFileFullArgv" />
-  </Target>
-
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EnumVisitor.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="ForwardDeclarationVisitor.cs" />
+    <Compile Include="FunctionVisitor.cs" />
+    <Compile Include="ICXCursorVisitor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="StructVisitor.cs" />
+    <Compile Include="TypeDefVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClangSharp\ClangSharp.csproj">
+      <Project>{A15DA144-8A09-4E4B-8426-52C8E2F410A3}</Project>
+      <Name>ClangSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
