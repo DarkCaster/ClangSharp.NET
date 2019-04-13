@@ -54,7 +54,7 @@ namespace ClangSharpPInvokeGenerator
 
                 if (!this.visitedStructs.Contains(structName))
                 {
-                    if(isSequential) this.IndentedWriteLine("[StructLayout(LayoutKind.Explicit"+(isAnsi?", CharSet=CharSet.Ansi":"")+")]");
+                    if(isSequential) this.IndentedWriteLine("[StructLayout(LayoutKind.Sequential" + (isAnsi?", CharSet=CharSet.Ansi":"")+")]");
                     this.IndentedWriteLine("public partial struct " + structName);
                     this.IndentedWriteLine("{");
 
