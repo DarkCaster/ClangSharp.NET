@@ -43,6 +43,12 @@ namespace ClangSharpPInvokeGenerator
                     case CXTypeKind.CXType_UShort:
                         inheritedEnumType = "ushort";
                         break;
+                    case CXTypeKind.CXType_Long:
+                        inheritedEnumType = Extensions.abi64bit?"long":"int";
+                        break;
+                    case CXTypeKind.CXType_ULong:
+                        inheritedEnumType = Extensions.abi64bit?"ulong":"uint";
+                        break;
                     case CXTypeKind.CXType_LongLong:
                         inheritedEnumType = "long";
                         break;
