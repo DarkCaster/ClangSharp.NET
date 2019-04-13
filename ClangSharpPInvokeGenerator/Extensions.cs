@@ -7,6 +7,9 @@ namespace ClangSharpPInvokeGenerator
 
     internal static class Extensions
     {
+        public static volatile bool abi64bit=false;
+        public static volatile bool charToByte=false;
+
         public static bool IsInSystemHeader(this CXCursor cursor)
         {
             return clang.Location_isInSystemHeader(clang.getCursorLocation(cursor)) != 0;
@@ -37,7 +40,7 @@ namespace ClangSharpPInvokeGenerator
                     return "bool";
                 case CXTypeKind.CXType_UChar:
                 case CXTypeKind.CXType_Char_U:
-                    return "char";
+                    return charToByte?"byte":"char";
                 case CXTypeKind.CXType_SChar:
                 case CXTypeKind.CXType_Char_S:
                     return "sbyte";
@@ -57,9 +60,9 @@ namespace ClangSharpPInvokeGenerator
                 case CXTypeKind.CXType_NullPtr: // ugh, what else can I do?
                     return "IntPtr";
                 case CXTypeKind.CXType_Long:
-                    return "int";
+                    return abi64bit?"long":"int";
                 case CXTypeKind.CXType_ULong:
-                    return "int";
+                    return abi64bit?"ulong":"uint";
                 case CXTypeKind.CXType_LongLong:
                     return "long";
                 case CXTypeKind.CXType_ULongLong:

@@ -67,6 +67,16 @@ namespace ClangSharpPInvokeGenerator
                 {
                     excludeFunctions = match.Value;
                 }
+
+                if (string.Equals(match.Key, "--c") || string.Equals(match.Key, "--charToByte"))
+                {
+                    Extensions.charToByte = bool.Parse(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--a") || string.Equals(match.Key, "--abi64bit"))
+                {
+                    Extensions.abi64bit = bool.Parse(match.Value);
+                }
             }
 
             var errorList = new List<string>();
@@ -92,7 +102,7 @@ namespace ClangSharpPInvokeGenerator
 
             if (errorList.Any())
             {
-                Console.WriteLine("Usage: ClangPInvokeGenerator --file [fileLocation] --libraryPath [library.dll] --output [output.cs] --namespace [Namespace] --include [headerFileIncludeDirs] --excludeFunctions [func1,func2]");
+                Console.WriteLine("Usage: ClangPInvokeGenerator --file [fileLocation] --libraryPath [library.dll] --output [output.cs] --namespace [Namespace] --include [headerFileIncludeDirs] --excludeFunctions [func1,func2] --charToByte true|false --abi64bit true|false");
                 foreach (var error in errorList)
                 {
                     Console.WriteLine(error);
