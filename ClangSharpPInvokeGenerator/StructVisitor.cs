@@ -7,6 +7,10 @@ namespace ClangSharpPInvokeGenerator
 
     internal sealed class StructVisitor : ICXCursorVisitor
     {
+        public static volatile bool isSequential = false;
+
+        public static volatile bool isAnsi = false;
+
         private readonly ISet<string> visitedStructs = new HashSet<string>();
 
         private readonly TextWriter tw;
@@ -50,6 +54,7 @@ namespace ClangSharpPInvokeGenerator
 
                 if (!this.visitedStructs.Contains(structName))
                 {
+                    if(isSequential) this.IndentedWriteLine("[StructLayout(LayoutKind.Explicit"+(isAnsi?", CharSet=CharSet.Ansi":"")+")]");
                     this.IndentedWriteLine("public partial struct " + structName);
                     this.IndentedWriteLine("{");
 

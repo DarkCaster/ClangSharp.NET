@@ -77,6 +77,16 @@ namespace ClangSharpPInvokeGenerator
                 {
                     Extensions.abi64bit = bool.Parse(match.Value);
                 }
+
+                if (string.Equals(match.Key, "--s") || string.Equals(match.Key, "--seqStructs"))
+                {
+                    StructVisitor.isSequential = bool.Parse(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--ansiStructs"))
+                {
+                    StructVisitor.isAnsi = bool.Parse(match.Value);
+                }
             }
 
             var errorList = new List<string>();
