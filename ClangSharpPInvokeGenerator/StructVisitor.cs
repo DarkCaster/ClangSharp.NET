@@ -34,7 +34,7 @@ namespace ClangSharpPInvokeGenerator
             }
 
             CXCursorKind curKind = clang.getCursorKind(cursor);
-            if (curKind == CXCursorKind.CXCursor_StructDecl)
+            if (curKind == CXCursorKind.CXCursor_StructDecl || curKind == CXCursorKind.CXCursor_UnionDecl)
             {
                 this.fieldPosition = 0;
                 var structName = clang.getCursorSpelling(cursor).ToString();
@@ -54,7 +54,10 @@ namespace ClangSharpPInvokeGenerator
 
                 if (!this.visitedStructs.Contains(structName))
                 {
-                    if(isSequential) this.IndentedWriteLine("[StructLayout(LayoutKind.Sequential" + (isAnsi?", CharSet=CharSet.Ansi":"")+")]");
+                    if(curKind == CXCursorKind.CXCursor_UnionDecl)
+                        this.IndentedWriteLine("[StructLayout(LayoutKind.Explicit" + (isAnsi?", CharSet=CharSet.Ansi":"")+")]");
+                    else if(isSequential)
+                        this.IndentedWriteLine("[StructLayout(LayoutKind.Sequential" + (isAnsi?", CharSet=CharSet.Ansi":"")+")]");
                     this.IndentedWriteLine("public partial struct " + structName);
                     this.IndentedWriteLine("{");
 
