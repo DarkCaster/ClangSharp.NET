@@ -9,6 +9,7 @@ namespace ClangSharpPInvokeGenerator
     {
         public static volatile bool abi64bit=Environment.Is64BitProcess;
         public static volatile bool charToByte=false;
+        public static volatile bool fixNestedStructs = false;
 
         public static bool IsInSystemHeader(this CXCursor cursor)
         {
@@ -110,7 +111,13 @@ namespace ClangSharpPInvokeGenerator
                     }
                 case CXTypeKind.CXType_Record:
                 case CXTypeKind.CXType_Enum:
-                    return "public " + clang.getTypeSpelling(canonical).ToString() + " @" + cursorSpelling + ";";
+                    var typeSpelling= clang.getTypeSpelling(canonical).ToString();
+                    if (fixNestedStructs && typeSpelling.Contains("(anonymous "))
+                    {
+                        typeSpelling=cursorSpelling;
+                        cursorSpelling=$"anon_{cursorSpelling}";
+                    }
+                    return "public " + typeSpelling + " @" + cursorSpelling + ";";
                 default:
                     return "public " + canonical.ToPlainTypeString() + " @" + cursorSpelling + ";";
             }

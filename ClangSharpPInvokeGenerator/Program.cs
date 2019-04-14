@@ -90,9 +90,14 @@ namespace ClangSharpPInvokeGenerator
                     StructVisitor.isSequential = bool.Parse(match.Value);
                 }
 
-                if (string.Equals(match.Key, "--ansiStructs"))
+                if (string.Equals(match.Key, "--a") || string.Equals(match.Key, "--ansiStructs"))
                 {
                     StructVisitor.isAnsi = bool.Parse(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--fixNestedStructs"))
+                {
+                    Extensions.fixNestedStructs = bool.Parse(match.Value);
                 }
             }
 
