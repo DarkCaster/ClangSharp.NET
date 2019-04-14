@@ -2,7 +2,17 @@
 
 ClangSharp are strongly-typed safe Clang bindings written in C# for .NET and Mono, tested on Linux and Windows. ClangSharp is self-hosted and ClangSharp auto-generates itself parsing LLVM-C header files.
 
-If you're on Windows, consider using the [**ClangSharp 3.6 NuGet Package**](http://www.nuget.org/packages/ClangSharp/3.6.0) - built from Clang 3.6 Release.
+## _Custom improvements to ClangSharpPInvokeGenerator utility compared to original project_
+
+ * Added support for unions (experimental, may be unstable)
+ * --charToByte <true|false>
+ * --force32bitABI
+ * --useC
+ * --seqStructs
+ * --ansiStructs
+ * --arrayHelpers
+ * --fixNestedStructs
+ * --genDelegates
 
 ## Building ClangSharp
 
