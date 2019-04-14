@@ -132,6 +132,8 @@ namespace ClangSharpPInvokeGenerator
 
             var createIndex = clang.createIndex(0, 0);
             string[] arr = { "-x", "c++" };
+            if (Environment.Is64BitProcess && !Extensions.abi64bit)
+                arr = arr.Concat(new string[] { "-m32" }).ToArray();
 
             arr = arr.Concat(includeDirs.Select(x => "-I" + x)).ToArray();
 
