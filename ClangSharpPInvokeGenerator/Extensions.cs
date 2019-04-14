@@ -11,6 +11,7 @@ namespace ClangSharpPInvokeGenerator
         public static volatile bool charToByte=false;
         public static volatile bool fixNestedStructs = false;
         public static volatile bool arrayHelpers = false;
+        public static volatile bool genDelegates = false;
 
         public static bool IsInSystemHeader(this CXCursor cursor)
         {
@@ -139,12 +140,16 @@ namespace ClangSharpPInvokeGenerator
             var functionName = clang.getCursorSpelling(cursor).ToString();
             var resultType = clang.getCursorResultType(cursor);
 
+            if(!genDelegates)
+            {
             tw.WriteLine("        [DllImport(libraryPath, EntryPoint = \"" + functionName + "\", CallingConvention = " + functionType.CallingConventionSpelling() + ")]");
             if (resultType.IsPtrToConstChar())
                 tw.WriteLine("        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))]");
 
             tw.Write("        public static extern ");
-
+            }
+            else
+                tw.Write("        public delegate ");
             ReturnTypeHelper(resultType, tw);
 
             if (functionName.StartsWith(prefixStrip))

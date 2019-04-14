@@ -104,6 +104,11 @@ namespace ClangSharpPInvokeGenerator
                 {
                     Extensions.fixNestedStructs = bool.Parse(match.Value);
                 }
+
+                if (string.Equals(match.Key, "--genDelegates"))
+                {
+                    Extensions.genDelegates = bool.Parse(match.Value);
+                }
             }
 
             var errorList = new List<string>();
