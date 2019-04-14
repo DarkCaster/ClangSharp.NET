@@ -11,6 +11,8 @@ namespace ClangSharpPInvokeGenerator
 
         public static volatile bool isAnsi = false;
 
+        public static Stack<bool> selectedUnion = new Stack<bool>();
+
         private readonly ISet<string> visitedStructs = new HashSet<string>();
 
         private readonly TextWriter tw;
@@ -62,7 +64,9 @@ namespace ClangSharpPInvokeGenerator
                     this.IndentedWriteLine("{");
 
                     this.indentLevel++;
+                    selectedUnion.Push(curKind == CXCursorKind.CXCursor_UnionDecl);
                     clang.visitChildren(cursor, this.Visit, new CXClientData(IntPtr.Zero));
+                    selectedUnion.Pop();
                     this.indentLevel--;
 
                     this.IndentedWriteLine("}");
@@ -83,6 +87,8 @@ namespace ClangSharpPInvokeGenerator
                 }
 
                 this.fieldPosition++;
+                if (selectedUnion.Count > 0 && selectedUnion.Peek())
+                    this.IndentedWriteLine("[FieldOffset(0)]");
                 this.IndentedWriteLine(cursor.ToMarshalString(fieldName));
                 return CXChildVisitResult.CXChildVisit_Continue;
             }
