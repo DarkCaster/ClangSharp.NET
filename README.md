@@ -4,15 +4,17 @@ ClangSharp are strongly-typed safe Clang bindings written in C# for .NET and Mon
 
 ## _Custom improvements to ClangSharpPInvokeGenerator utility compared to original project_
 
+ * Project converted into regular .NET lib/app using .NET 4.7.2 profile (tested with Mono 5.20 on Linux x86_64).
  * Added support for unions (experimental, may be unstable), cannot be disabled for now.
- * Convert all "char" fields to "byte". Cmdline option: --charToByte < true | false >
- * When running on 64-bit systems with 64-bit clang, you may force clang to generate code for 32-bit ABI, this will alter code-generation for types like "size_t", "int64_t", "long" e.t.c . Cmdline option: --force32bitABI < true | false >
- * Parse header files with C language instead of C++. Cmdline option: --useC < true | false >
- * Generate StructLayout attributes for structures. Cmdline option: --seqStructs < true | false >
- * Add CharSet=CharSet.Ansi property to StructLayout attributes. Cmdline option: --ansiStructs < true | false >
- * Generate properties to help with convenient access to arrays. Cmdline option: --arrayHelpers < true | false >
+ * Added option to convert all "char" fields to "byte". Cmdline option: --charToByte < true | false >
+ * Fix generation for size_t/int64_t/long and similiar types when using 64bit libclang (tested on libclang.so.4 with Mono/Linux)
+ * When running on 64-bit systems with 64-bit clang, you may force clang to generate code for 32-bit ABI, this will alter code-generation for long types like size_t/int64_t/long e.t.c . Cmdline option: --force32bitABI < true | false >
+ * Added option to parse header files with C language instead of C++. Cmdline option: --useC < true | false >
+ * Added option to generate StructLayout attributes for structures. Cmdline option: --seqStructs < true | false >
+ * Added option to set CharSet=CharSet.Ansi property to StructLayout attributes. Cmdline option: --ansiStructs < true | false >
+ * Added option to generate helper-properties for providing convenient access to arrays. Cmdline option: --arrayHelpers < true | false >
  * Fixed parsing of some nested structs and unions, which sometimes mistakenly considered as anonymous. This feature may be unstable. Cmdline option: --fixNestedStructs < true | false >
- * Generate delegates instead of static extern methods. May be used to dynamically access native library methods with kernel32.dll::GetProcAddress (or libdl.so::dlsym on Linux/Mono). Cmdline option: --genDelegates < true | false >
+ * Added option to generate delegates instead of static extern methods. May be used to dynamically access native library methods with kernel32.dll::GetProcAddress (or libdl.so::dlsym on Linux/Mono). Cmdline option: --genDelegates < true | false >
 
 ## Building ClangSharp
 
