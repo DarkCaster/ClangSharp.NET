@@ -17,7 +17,7 @@ ClangSharp are strongly-typed safe Clang bindings written in C# for .NET and Mon
 ## Building ClangSharp
 
 ```bash
-dotnet msbuild /t:GenerateClangSharp ClangSharpPInvokeGenerator
+msbuild /target:ClangSharpPInvokeGenerator:Rebuild /property:Configuration=Release,Platform="Any CPU" ClangSharp.sln
 ```
 
 ## Features
