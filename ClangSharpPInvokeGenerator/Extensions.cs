@@ -7,7 +7,7 @@ namespace ClangSharpPInvokeGenerator
 
     internal static class Extensions
     {
-        public static volatile bool abi64bit=false;
+        public static volatile bool abi64bit=Environment.Is64BitProcess;
         public static volatile bool charToByte=false;
 
         public static bool IsInSystemHeader(this CXCursor cursor)

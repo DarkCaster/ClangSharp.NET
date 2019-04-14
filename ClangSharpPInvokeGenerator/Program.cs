@@ -73,9 +73,14 @@ namespace ClangSharpPInvokeGenerator
                     Extensions.charToByte = bool.Parse(match.Value);
                 }
 
-                if (string.Equals(match.Key, "--a") || string.Equals(match.Key, "--abi64bit"))
+                if (string.Equals(match.Key, "--a64") || string.Equals(match.Key, "--forceABI64bit"))
                 {
-                    Extensions.abi64bit = bool.Parse(match.Value);
+                    Extensions.abi64bit |= bool.Parse(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--a32") || string.Equals(match.Key, "--forceABI32bit"))
+                {
+                    Extensions.abi64bit &= !bool.Parse(match.Value);
                 }
 
                 if (string.Equals(match.Key, "--s") || string.Equals(match.Key, "--seqStructs"))
@@ -112,7 +117,8 @@ namespace ClangSharpPInvokeGenerator
 
             if (errorList.Any())
             {
-                Console.WriteLine("Usage: ClangPInvokeGenerator --file [fileLocation] --libraryPath [library.dll] --output [output.cs] --namespace [Namespace] --include [headerFileIncludeDirs] --excludeFunctions [func1,func2] --charToByte true|false --abi64bit true|false");
+                Console.WriteLine("Usage: ClangPInvokeGenerator --file [fileLocation] --libraryPath [library.dll] --output [output.cs] --namespace [Namespace] --include [headerFileIncludeDirs] --excludeFunctions [func1,func2]");
+                Console.WriteLine("extra options: ");
                 foreach (var error in errorList)
                 {
                     Console.WriteLine(error);
