@@ -73,12 +73,7 @@ namespace ClangSharpPInvokeGenerator
                     Extensions.charToByte = bool.Parse(match.Value);
                 }
 
-                if (string.Equals(match.Key, "--a64") || string.Equals(match.Key, "--forceABI64bit"))
-                {
-                    Extensions.abi64bit |= bool.Parse(match.Value);
-                }
-
-                if (string.Equals(match.Key, "--a32") || string.Equals(match.Key, "--forceABI32bit"))
+                if (string.Equals(match.Key, "--a32") || string.Equals(match.Key, "--force32bitABI"))
                 {
                     Extensions.abi64bit &= !bool.Parse(match.Value);
                 }
