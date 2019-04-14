@@ -26,6 +26,8 @@ namespace ClangSharpPInvokeGenerator
             string excludeFunctions = "";
             string[] excludeFunctionsArray = null;
 
+            bool useC = false;
+
             foreach (KeyValuePair<string, string> match in matches)
             {
                 if (string.Equals(match.Key, "--n") || string.Equals(match.Key, "--namespace"))
@@ -78,6 +80,11 @@ namespace ClangSharpPInvokeGenerator
                     Extensions.abi64bit &= !bool.Parse(match.Value);
                 }
 
+                if (string.Equals(match.Key, "--uc") || string.Equals(match.Key, "--useC"))
+                {
+                    useC = bool.Parse(match.Value);
+                }
+
                 if (string.Equals(match.Key, "--s") || string.Equals(match.Key, "--seqStructs"))
                 {
                     StructVisitor.isSequential = bool.Parse(match.Value);
@@ -126,7 +133,7 @@ namespace ClangSharpPInvokeGenerator
             }
 
             var createIndex = clang.createIndex(0, 0);
-            string[] arr = { "-x", "c++" };
+            string[] arr = { "-x", useC?"c":"c++" };
             if (Environment.Is64BitProcess && !Extensions.abi64bit)
                 arr = arr.Concat(new string[] { "-m32" }).ToArray();
 
