@@ -95,6 +95,11 @@ namespace ClangSharpPInvokeGenerator
                     StructVisitor.isAnsi = bool.Parse(match.Value);
                 }
 
+                if (string.Equals(match.Key, "--ah") || string.Equals(match.Key, "--arrayHelpers"))
+                {
+                    Extensions.arrayHelpers = bool.Parse(match.Value);
+                }
+
                 if (string.Equals(match.Key, "--fixNestedStructs"))
                 {
                     Extensions.fixNestedStructs = bool.Parse(match.Value);

@@ -10,6 +10,7 @@ namespace ClangSharpPInvokeGenerator
         public static volatile bool abi64bit=Environment.Is64BitProcess;
         public static volatile bool charToByte=false;
         public static volatile bool fixNestedStructs = false;
+        public static volatile bool arrayHelpers = false;
 
         public static bool IsInSystemHeader(this CXCursor cursor)
         {
@@ -96,7 +97,16 @@ namespace ClangSharpPInvokeGenerator
                     {
                         sb.Append("public " + elementType.ToPlainTypeString() + " @" + cursorSpelling + i + "; ");
                     }
-
+                    if (arrayHelpers && elementType.ToPlainTypeString()!="UnknownType" )
+                    {
+                        sb.Append($"public {elementType.ToPlainTypeString()}[] @{cursorSpelling} {{ get {{ var result=new {elementType.ToPlainTypeString()}[{arraySize}]; ");
+                        for (int i = 0; i < arraySize; ++i)
+                            sb.Append($"result[{i}]=@{cursorSpelling}{i}; ");
+                        sb.Append("return result; } set {");
+                        for (int i = 0; i < arraySize; ++i)
+                            sb.Append($"@{cursorSpelling}{i}=value[{i}]; ");
+                        sb.Append("}}");
+                    }
                     return sb.ToString().TrimEnd();
                 case CXTypeKind.CXType_Pointer:
                     var pointeeType = clang.getCanonicalType(clang.getPointeeType(canonical));
