@@ -1,4 +1,8 @@
+#if LINUX_x86_64
+namespace ClangSharp_x86_64
+#else
 namespace ClangSharp
+#endif
 {
     using System;
     using System.Runtime.InteropServices;

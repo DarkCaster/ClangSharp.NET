@@ -1,3 +1,4 @@
+#if !LINUX_x86_64
 namespace ClangSharp
 {
     using System;
@@ -2392,3 +2393,4 @@ namespace ClangSharp
 
     }
 }
+#endif
