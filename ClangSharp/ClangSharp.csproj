@@ -34,6 +34,7 @@
     <Compile Include="Generated.cs" />
     <Compile Include="Generated.Custom.cs" />
     <Compile Include="StringMarshaler.cs" />
+    <Compile Include="Generated_Linux_x86_64.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
