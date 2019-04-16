@@ -16,10 +16,10 @@ ClangSharp are strongly-typed safe Clang bindings written in C# for .NET and Mon
  * Fixed parsing of some nested structs and unions, which sometimes mistakenly considered as anonymous. This feature may be unstable. Cmdline option: --fixNestedStructs < true | false >
  * Added option to generate delegates instead of static extern methods. May be used to dynamically access native library methods with kernel32.dll::GetProcAddress (or libdl.so::dlsym on Linux/Mono). Cmdline option: --genDelegates < true | false >
 
-## Building ClangSharp
+## Building ClangSharp (example for Linux/Mono)
 
 ```bash
-msbuild /target:ClangSharpPInvokeGenerator:Rebuild /property:Configuration=Release,Platform="Any CPU" ClangSharp.sln
+msbuild /target:ClangSharpPInvokeGenerator:Rebuild /property:Configuration=Debug_Linux,Platform="x64" ClangSharp.sln
 ```
 
 ## Features
