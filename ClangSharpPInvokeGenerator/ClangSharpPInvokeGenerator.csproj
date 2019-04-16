@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug_Linux</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{67CDB80E-6568-4727-B481-AC943DE4698B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ClangSharpPInvokeGenerator</RootNamespace>
@@ -11,25 +11,29 @@
     <CodePage>65001</CodePage>
     <StartupObject>ClangSharpPInvokeGenerator.Program</StartupObject>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x86' ">
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG; TRACE;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <OutputPath>bin\x86\Debug_Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <ExternalConsole>true</ExternalConsole>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <LangVersion>Latest</LangVersion>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x64' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug_Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <ExternalConsole>true</ExternalConsole>
-    <LangVersion>Latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_Linux|x86' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Release_Linux</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_Linux|x64' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Release_Linux</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
