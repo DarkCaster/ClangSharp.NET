@@ -1,0 +1,22 @@
+sizeof char = 8 bits
+sizeof unsigned char = 8 bits
+sizeof short = 16 bits
+sizeof unsigned short = 16 bits
+sizeof int = 32 bits
+sizeof unsigned int = 32 bits
+sizeof long = 32 bits
+sizeof unsigned long = 32 bits
+sizeof long long = 64 bits
+sizeof unsigned long long = 64 bits
+sizeof long int = 32 bits
+sizeof unsigned long int = 32 bits
+sizeof int8_t = 8 bits
+sizeof uint8_t = 8 bits
+sizeof int16_t = 16 bits
+sizeof uint16_t = 16 bits
+sizeof int32_t = 32 bits
+sizeof uint32_t = 32 bits
+sizeof int64_t = 64 bits
+sizeof uint64_t = 64 bits
+sizeof size_t = 64 bits
+
