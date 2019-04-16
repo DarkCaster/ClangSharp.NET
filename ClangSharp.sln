@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp", "ClangSharp\ClangSharp.csproj", "{A15DA144-8A09-4E4B-8426-52C8E2F410A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharpPInvokeGenerator", "ClangSharpPInvokeGenerator\ClangSharpPInvokeGenerator.csproj", "{67CDB80E-6568-4727-B481-AC943DE4698B}"
@@ -9,38 +10,86 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp.Test", "ClangSha
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-		Debug_Linux|x86 = Debug_Linux|x86
+		Debug_Linux|Any CPU = Debug_Linux|Any CPU
 		Debug_Linux|x64 = Debug_Linux|x64
-		Release_Linux|x86 = Release_Linux|x86
+		Debug_Linux|x86 = Debug_Linux|x86
+		Debug_Windows|Any CPU = Debug_Windows|Any CPU
+		Debug_Windows|x64 = Debug_Windows|x64
+		Debug_Windows|x86 = Debug_Windows|x86
+		Release_Linux|Any CPU = Release_Linux|Any CPU
 		Release_Linux|x64 = Release_Linux|x64
+		Release_Linux|x86 = Release_Linux|x86
+		Release_Windows|Any CPU = Release_Windows|Any CPU
+		Release_Windows|x64 = Release_Windows|x64
+		Release_Windows|x86 = Release_Windows|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
-		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|Any CPU.ActiveCfg = Debug_Linux|x86
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
-		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
-		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Windows|Any CPU.ActiveCfg = Debug_Windows|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Windows|x64.ActiveCfg = Debug_Windows|x64
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Windows|x64.Build.0 = Debug_Windows|x64
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Windows|x86.ActiveCfg = Debug_Windows|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Windows|x86.Build.0 = Debug_Windows|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|Any CPU.ActiveCfg = Release_Linux|x86
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x64.ActiveCfg = Release_Linux|x64
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x64.Build.0 = Release_Linux|x64
-		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
-		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Windows|Any CPU.ActiveCfg = Release_Windows|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Windows|x64.ActiveCfg = Release_Windows|x64
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Windows|x64.Build.0 = Release_Windows|x64
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Windows|x86.ActiveCfg = Release_Windows|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release_Windows|x86.Build.0 = Release_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|Any CPU.ActiveCfg = Debug_Linux|x86
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
-		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
-		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Windows|Any CPU.ActiveCfg = Debug_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Windows|x64.ActiveCfg = Debug_Windows|x64
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Windows|x64.Build.0 = Debug_Windows|x64
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Windows|x86.ActiveCfg = Debug_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Windows|x86.Build.0 = Debug_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|Any CPU.ActiveCfg = Release_Linux|x86
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x64.ActiveCfg = Release_Linux|x64
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x64.Build.0 = Release_Linux|x64
-		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
-		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Windows|Any CPU.ActiveCfg = Release_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Windows|x64.ActiveCfg = Release_Windows|x64
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Windows|x64.Build.0 = Release_Windows|x64
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Windows|x86.ActiveCfg = Release_Windows|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release_Windows|x86.Build.0 = Release_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|Any CPU.ActiveCfg = Debug_Linux|x86
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
-		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
-		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Windows|Any CPU.ActiveCfg = Debug_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Windows|x64.ActiveCfg = Debug_Windows|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Windows|x64.Build.0 = Debug_Windows|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Windows|x86.ActiveCfg = Debug_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Windows|x86.Build.0 = Debug_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|Any CPU.ActiveCfg = Release_Linux|x86
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x64.ActiveCfg = Release_Linux|x64
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x64.Build.0 = Release_Linux|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x86.ActiveCfg = Release_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Linux|x86.Build.0 = Release_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Windows|Any CPU.ActiveCfg = Release_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Windows|x64.ActiveCfg = Release_Windows|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Windows|x64.Build.0 = Release_Windows|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Windows|x86.ActiveCfg = Release_Windows|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release_Windows|x86.Build.0 = Release_Windows|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52EA9221-136F-4EFF-9630-8907B4924B0F}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

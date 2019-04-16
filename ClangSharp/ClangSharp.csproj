@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug_Linux</Configuration>
@@ -15,7 +15,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\x86\Debug_Linux</OutputPath>
-    <DefineConstants>DEBUG;TRACE;LINUX_X86;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;LINUX_X86</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
@@ -25,7 +25,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\x64\Debug_Linux</OutputPath>
-    <DefineConstants>DEBUG;TRACE;LINUX_X86_64;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;LINUX_X86_64</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
@@ -33,7 +33,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_Linux|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Release_Linux</OutputPath>
-    <DefineConstants>LINUX_X86;</DefineConstants>
+    <DefineConstants>LINUX_X86</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
@@ -41,10 +41,44 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_Linux|x64' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\x64\Release_Linux</OutputPath>
-    <DefineConstants>LINUX_X86_64;</DefineConstants>
+    <DefineConstants>LINUX_X86_64</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Windows|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug_Windows\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_X86</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Windows|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug_Windows\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_X86_64</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_Windows|x86'">
+    <OutputPath>bin\x86\Release_Windows\</OutputPath>
+    <DefineConstants>WINDOWS_X86</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_Windows|x64'">
+    <OutputPath>bin\x64\Release_Windows\</OutputPath>
+    <DefineConstants>WINDOWS_X86_64</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
