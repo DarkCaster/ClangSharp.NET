@@ -98,12 +98,12 @@ namespace ClangSharpPInvokeGenerator
                 {
                     Extensions.charToByte = bool.Parse(match.Value);
                 }
-
-                if (string.Equals(match.Key, "--a32") || string.Equals(match.Key, "--force32bitABI"))
+#if LINUX_X86_64 || WINDOWS_X86_64
+                if (string.Equals(match.Key, "--a32") || string.Equals(match.Key, "--arch32bit"))
                 {
-                    Extensions.abi64bit &= !bool.Parse(match.Value);
+                    Extensions.arch64bit = !bool.Parse(match.Value);
                 }
-
+#endif
                 if (string.Equals(match.Key, "--uc") || string.Equals(match.Key, "--useC"))
                 {
                     useC = bool.Parse(match.Value);
@@ -173,7 +173,7 @@ namespace ClangSharpPInvokeGenerator
 
             var createIndex = clang.createIndex(0, 0);
             string[] arr = { "-x", useC?"c":"c++" };
-            if (Environment.Is64BitProcess && !Extensions.abi64bit)
+            if (Environment.Is64BitProcess && !Extensions.arch64bit)
                 arr = arr.Concat(new string[] { "-m32" }).ToArray();
 
             arr = arr.Concat(includeDirs.Select(x => "-I" + x)).ToArray();

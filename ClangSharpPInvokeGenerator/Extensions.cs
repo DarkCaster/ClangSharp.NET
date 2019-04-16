@@ -16,7 +16,7 @@ namespace ClangSharpPInvokeGenerator
 
     internal static class Extensions
     {
-        public static volatile bool abi64bit=Environment.Is64BitProcess;
+        public static volatile bool arch64bit=Environment.Is64BitProcess;
         public static volatile bool charToByte=false;
         public static volatile bool fixNestedStructs = false;
         public static volatile bool arrayHelpers = false;
@@ -71,10 +71,17 @@ namespace ClangSharpPInvokeGenerator
                 case CXTypeKind.CXType_Pointer:
                 case CXTypeKind.CXType_NullPtr: // ugh, what else can I do?
                     return "IntPtr";
+#if WINDOWS_X86_64 || WINDOWS_X86
                 case CXTypeKind.CXType_Long:
-                    return abi64bit?"long":"int";
+                    return "int";
                 case CXTypeKind.CXType_ULong:
-                    return abi64bit?"ulong":"uint";
+                    return "uint";
+#elif LINUX_X86_64 || LINUX_X86
+                case CXTypeKind.CXType_Long:
+                    return arch64bit ? "long" : "int";
+                case CXTypeKind.CXType_ULong:
+                    return arch64bit ? "ulong" : "uint";
+#endif
                 case CXTypeKind.CXType_LongLong:
                     return "long";
                 case CXTypeKind.CXType_ULongLong:
