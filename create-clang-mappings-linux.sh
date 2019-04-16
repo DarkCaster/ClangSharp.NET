@@ -11,7 +11,7 @@ script_dir="$( cd "$( dirname "$0" )" && pwd )"
 clang_dir=`mktemp -d -t CLANG_INCLUDES_XXXXXXXXXXX`
 
 arch=`uname -m`
-[[ $arch == "x86_64" ]] && arch = "x64"
+[[ $arch == "x86_64" ]] && arch="x64"
 
 cp -r /usr/include/clang-c "$clang_dir"
 
