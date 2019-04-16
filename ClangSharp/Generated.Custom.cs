@@ -13,7 +13,11 @@ namespace ClangSharp
         {
             public IntPtr @Filename;
             public IntPtr @Contents;
+#if LINUX_x86_64
+            public ulong @Length;
+#else
             public int @Length;
+#endif
         }
 
         internal struct _CXIdxEntityInfo
