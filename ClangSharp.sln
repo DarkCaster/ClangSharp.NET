@@ -10,16 +10,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangSharp.Test", "ClangSha
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug_Linux|Any CPU = Debug_Linux|Any CPU
 		Debug_Linux|x64 = Debug_Linux|x64
 		Debug_Linux|x86 = Debug_Linux|x86
-		Debug_Windows|Any CPU = Debug_Windows|Any CPU
 		Debug_Windows|x64 = Debug_Windows|x64
 		Debug_Windows|x86 = Debug_Windows|x86
-		Release_Linux|Any CPU = Release_Linux|Any CPU
 		Release_Linux|x64 = Release_Linux|x64
 		Release_Linux|x86 = Release_Linux|x86
-		Release_Windows|Any CPU = Release_Windows|Any CPU
 		Release_Windows|x64 = Release_Windows|x64
 		Release_Windows|x86 = Release_Windows|x86
 	EndGlobalSection
