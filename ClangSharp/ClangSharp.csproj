@@ -26,6 +26,22 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x86' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug_Linux</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LINUX_X86;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x64' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug_Linux</OutputPath>
+    <DefineConstants>LINUX_X86_64;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>

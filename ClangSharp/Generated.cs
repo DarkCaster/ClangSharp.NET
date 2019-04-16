@@ -1,5 +1,5 @@
-#if LINUX_x86_64
-namespace ClangSharp_LINUX_x86_64
+﻿#if LINUX_X86_64
+namespace ClangSharp_LINUX_X86_64
 #else
 namespace ClangSharp
 #endif
@@ -39,7 +39,7 @@ namespace ClangSharp
     {
         [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))] public string @Filename;
         [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))] public string @Contents;
-#if LINUX_x86_64
+#if LINUX_X86_64
         public ulong @Length;
 #else
         public int @Length;
@@ -80,7 +80,7 @@ namespace ClangSharp
     public partial struct CXTUResourceUsageEntry
     {
         public CXTUResourceUsageKind @kind;
-#if LINUX_x86_64
+#if LINUX_X86_64
         public ulong @amount;
 #else
         public int @amount;
@@ -1429,7 +1429,7 @@ namespace ClangSharp
 
         [DllImport(libraryPath, EntryPoint = "clang_getFile", CallingConvention = CallingConvention.Cdecl)]
         public static extern CXFile getFile(CXTranslationUnit @tu, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))] string @file_name);
-#if LINUX_x86_64
+#if LINUX_X86_64
         [DllImport(libraryPath, EntryPoint = "clang_getFileContents", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))]
         public static extern string getFileContents(CXTranslationUnit @tu, CXFile @file, out ulong @size);
@@ -2406,4 +2406,3 @@ namespace ClangSharp
 
     }
 }
-#endif

@@ -11,20 +11,34 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug_Linux|x86 = Debug_Linux|x86
+		Debug_Linux|x64 = Debug_Linux|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
+		{A15DA144-8A09-4E4B-8426-52C8E2F410A3}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67CDB80E-6568-4727-B481-AC943DE4698B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
+		{67CDB80E-6568-4727-B481-AC943DE4698B}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.ActiveCfg = Debug_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x86.Build.0 = Debug_Linux|x86
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x64.ActiveCfg = Debug_Linux|x64
+		{C9619A5E-D5D1-4C9D-967E-0E8AF06E17A1}.Debug_Linux|x64.Build.0 = Debug_Linux|x64
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
