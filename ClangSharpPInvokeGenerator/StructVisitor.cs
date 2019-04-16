@@ -3,7 +3,16 @@ namespace ClangSharpPInvokeGenerator
     using System;
     using System.Collections.Generic;
     using System.IO;
+
+#if LINUX_X86_64
+    using ClangSharp_LINUX_X86_64;
+#elif LINUX_X86
+    using ClangSharp_LINUX_X86;
+#elif WINDOWS_X86_64
+    using ClangSharp_WINDOWS_X86_64;
+#else
     using ClangSharp;
+#endif
 
     internal sealed class StructVisitor : ICXCursorVisitor
     {

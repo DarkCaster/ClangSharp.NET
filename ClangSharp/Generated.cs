@@ -1,5 +1,9 @@
-﻿#if LINUX_X86_64
+#if LINUX_X86_64
 namespace ClangSharp_LINUX_X86_64
+#elif LINUX_X86
+namespace ClangSharp_LINUX_X86
+#elif WINDOWS_X86_64
+namespace ClangSharp_WINDOWS_X86_64
 #else
 namespace ClangSharp
 #endif
@@ -1434,7 +1438,10 @@ namespace ClangSharp
         [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))]
         public static extern string getFileContents(CXTranslationUnit @tu, CXFile @file, out ulong @size);
 #else
-#error TODO. also check for incorrect generation of size_t *size
+#warning TODO: check for incorrect generation of size_t *size
+        [DllImport(libraryPath, EntryPoint = "clang_getFileContents", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringMarshaler))]
+        public static extern string getFileContents(CXTranslationUnit @tu, CXFile @file, out ulong @size);
 #endif
         [DllImport(libraryPath, EntryPoint = "clang_File_isEqual", CallingConvention = CallingConvention.Cdecl)]
         public static extern int File_isEqual(CXFile @file1, CXFile @file2);

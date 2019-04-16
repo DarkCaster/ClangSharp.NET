@@ -5,12 +5,36 @@ namespace ClangSharpPInvokeGenerator
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+
+#if LINUX_X86_64
+    using ClangSharp_LINUX_X86_64;
+#elif LINUX_X86
+    using ClangSharp_LINUX_X86;
+#elif WINDOWS_X86_64
+    using ClangSharp_WINDOWS_X86_64;
+#else
     using ClangSharp;
+#endif
 
     public class Program
     {
         public static void Main(string[] args)
         {
+            //check for valid runtime configuration
+#if LINUX_X86_64 || WINDOWS_X86_64
+            if (!Environment.Is64BitProcess)
+                throw new Exception("Invalid runtime arch detected! This program intended to be run with 64-bit runtime only!");
+#else
+            if (Environment.Is64BitProcess)
+                throw new Exception("Invalid runtime arch detected! This program intended to be run with 32-bit runtime only!");
+#endif
+#if WINDOWS_X86 || WINDOWS_X86_64
+            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+                throw new Exception("Invalid OS detected! This program intended to be run on Windows only!");
+#else
+            if (Environment.OSVersion.Platform != PlatformID.Unix)
+                throw new Exception("Invalid OS detected! This program intended to be run on Linux/Mono only!");
+#endif
             Regex re = new Regex(@"(?<switch>-{1,2}\S*)(?:[=:]?|\s+)(?<value>[^-\s].*?)?(?=\s+[-]|$)");
             List<KeyValuePair<string, string>> matches = (from match in re.Matches(string.Join(" ", args)).Cast<Match>()
                                                           select new KeyValuePair<string, string>(match.Groups["switch"].Value, match.Groups["value"].Value))

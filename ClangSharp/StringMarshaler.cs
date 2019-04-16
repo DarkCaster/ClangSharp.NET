@@ -1,5 +1,9 @@
-﻿#if LINUX_X86_64
+#if LINUX_X86_64
 namespace ClangSharp_LINUX_X86_64
+#elif LINUX_X86
+namespace ClangSharp_LINUX_X86
+#elif WINDOWS_X86_64
+namespace ClangSharp_WINDOWS_X86_64
 #else
 namespace ClangSharp
 #endif
