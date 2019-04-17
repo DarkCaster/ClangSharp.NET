@@ -42,6 +42,7 @@ namespace ClangSharpPInvokeGenerator
 
             var files = new List<string>();
             var includeDirs = new List<string>();
+            var systemIncludeDirs = new List<string>();
             string outputFile = string.Empty;
             string @namespace = string.Empty;
             string libraryPath = string.Empty;
@@ -67,6 +68,11 @@ namespace ClangSharpPInvokeGenerator
                 if (string.Equals(match.Key, "--i") || string.Equals(match.Key, "--include"))
                 {
                     includeDirs.Add(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--is") || string.Equals(match.Key, "--iSystem"))
+                {
+                    systemIncludeDirs.Add(match.Value);
                 }
 
                 if (string.Equals(match.Key, "--o") || string.Equals(match.Key, "--output"))
