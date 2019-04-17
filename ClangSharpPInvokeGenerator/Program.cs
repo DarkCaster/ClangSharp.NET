@@ -182,6 +182,7 @@ namespace ClangSharpPInvokeGenerator
             if (Environment.Is64BitProcess && !Extensions.arch64bit)
                 arr = arr.Concat(new string[] { "-m32" }).ToArray();
 
+            arr = arr.Concat(systemIncludeDirs.Select(x => "-isystem" + x)).ToArray();
             arr = arr.Concat(includeDirs.Select(x => "-I" + x)).ToArray();
 
             List<CXTranslationUnit> translationUnits = new List<CXTranslationUnit>();
