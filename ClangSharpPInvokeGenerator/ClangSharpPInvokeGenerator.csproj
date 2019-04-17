@@ -12,6 +12,8 @@
     <StartupObject>ClangSharpPInvokeGenerator.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\x86\Debug_Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
@@ -20,6 +22,8 @@
     <DefineConstants>TRACE;DEBUG;LINUX_X86</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_Linux|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\x64\Debug_Linux</OutputPath>
     <WarningLevel>4</WarningLevel>
@@ -44,6 +48,8 @@
     <DefineConstants>LINUX_X86_64</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Windows|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <OutputPath>bin\x86\Debug_Windows\</OutputPath>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -52,6 +58,8 @@
     <DefineConstants>TRACE;DEBUG;WINDOWS_X86</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_Windows|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <OutputPath>bin\x64\Debug_Windows\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
