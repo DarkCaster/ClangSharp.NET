@@ -106,6 +106,6 @@ done < <($clang -E $useC $arch32bit -v $test_source_dir 2>&1)
 [[ $arch == "x86_64" ]] && arch="x64"
 mono=`which mono 2>/dev/null`
 [[ ! -z $MSYSTEM ]] && profile="Debug_Windows" || profile="Debug_Linux"
-echo running $mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${includes[@]}" "${cmdline[@]}"
+#echo running $mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${includes[@]}" "${cmdline[@]}"
 
 $mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${includes[@]}" "${cmdline[@]}"
