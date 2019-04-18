@@ -64,16 +64,6 @@ test_source=`mktemp -t CLANG_TEST_XXXXXXXXXXX`
 echo "detecting default include directories for clang"
 echo "int main(void) { return 0; };" >> $test_source
 
-includes=()
-includes_cnt=0
-
-add_include() {
-  includes[$includes_cnt]="--iSystem"
-  ((includes_cnt=includes_cnt+1))
-  includes[$includes_cnt]="$1"
-  ((includes_cnt=includes_cnt+1))
-}
-
 int_includes=()
 int_includes_cnt=0
 
@@ -95,9 +85,6 @@ while read line; do
     if [[ $trline =~ ^$resource_dir.*$ ]]; then
       add_int_include "$trline"
       echo "found clang-internal system include: $trline"
-    else
-      echo "found system include: $trline"
-      add_include "$trline"
     fi
   fi
 done < <($clang -E $useC $arch32bit -v $test_source 2>&1)
@@ -106,7 +93,7 @@ done < <($clang -E $useC $arch32bit -v $test_source 2>&1)
 [[ $arch == "x86_64" ]] && arch="x64"
 mono=`which mono 2>/dev/null`
 [[ ! -z $MSYSTEM ]] && profile="Debug_Windows" || profile="Debug_Linux"
-#echo running $mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${includes[@]}" "${cmdline[@]}"
+echo running $mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${cmdline[@]}"
 
-$mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${includes[@]}" "${cmdline[@]}"
+$mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/$profile/ClangSharpPInvokeGenerator.exe" "${int_includes[@]}" "${cmdline[@]}"
 rm "$test_source"
