@@ -11,7 +11,6 @@ script_dir="$( cd "$( dirname "$0" )" && pwd )"
 clang_dir=`mktemp -d -t CLANG_INCLUDES_XXXXXXXXXXX`
 
 arch=`uname -m`
-[[ $arch == "x86_64" ]] && arch="x64"
 
 cp -r /usr/include/clang-c "$clang_dir"
 
@@ -22,7 +21,8 @@ build_generator() {
 #--excludeFunctions
 
 generate_mappings() {
-  mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/Debug_Linux/ClangSharpPInvokeGenerator.exe" \
+  #mono "$script_dir/ClangSharpPInvokeGenerator/bin/$arch/Debug_Linux/ClangSharpPInvokeGenerator.exe" \
+  "$script_dir/clang-sharp-pinvoke-generator.sh" \
   --namespace ClangSharp_Linux_$arch \
   --l libclang \
   --file "$clang_dir/clang-c/Platform.h" \
