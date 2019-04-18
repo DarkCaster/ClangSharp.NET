@@ -84,7 +84,7 @@ namespace ClangSharpPInvokeGenerator
 
                 if (string.Equals(match.Key, "--nostd") || string.Equals(match.Key, "--noStdIncludes"))
                 {
-                    noStdIncludes=true;
+                    noStdIncludes = bool.Parse(match.Value);
                 }
 
                 if (string.Equals(match.Key, "--o") || string.Equals(match.Key, "--output"))
