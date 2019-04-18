@@ -43,6 +43,7 @@ namespace ClangSharpPInvokeGenerator
             var files = new List<string>();
             var includeDirs = new List<string>();
             var systemIncludeDirs = new List<string>();
+            var systemAfterIncludeDirs = new List<string>();
             string outputFile = string.Empty;
             string @namespace = string.Empty;
             string libraryPath = string.Empty;
@@ -52,6 +53,7 @@ namespace ClangSharpPInvokeGenerator
             string[] excludeFunctionsArray = null;
 
             bool useC = false;
+            bool noStdIncludes = false;
 
             foreach (KeyValuePair<string, string> match in matches)
             {
@@ -73,6 +75,16 @@ namespace ClangSharpPInvokeGenerator
                 if (string.Equals(match.Key, "--is") || string.Equals(match.Key, "--iSystem"))
                 {
                     systemIncludeDirs.Add(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--isa") || string.Equals(match.Key, "--iSystemAfter"))
+                {
+                    systemAfterIncludeDirs.Add(match.Value);
+                }
+
+                if (string.Equals(match.Key, "--nostd") || string.Equals(match.Key, "--noStdIncludes"))
+                {
+                    noStdIncludes=true;
                 }
 
                 if (string.Equals(match.Key, "--o") || string.Equals(match.Key, "--output"))
@@ -181,8 +193,11 @@ namespace ClangSharpPInvokeGenerator
             string[] arr = { "-x", useC?"c":"c++" };
             if (Environment.Is64BitProcess && !Extensions.arch64bit)
                 arr = arr.Concat(new string[] { "-m32" }).ToArray();
+            if(noStdIncludes)
+                arr = arr.Concat(new string[] { "-nostdinc", "-nostdinc++" }).ToArray();
 
             arr = arr.Concat(systemIncludeDirs.Select(x => "-isystem" + x)).ToArray();
+            arr = arr.Concat(systemAfterIncludeDirs.Select(x => "-isystem-after" + x)).ToArray();
             arr = arr.Concat(includeDirs.Select(x => "-I" + x)).ToArray();
 
             List<CXTranslationUnit> translationUnits = new List<CXTranslationUnit>();
