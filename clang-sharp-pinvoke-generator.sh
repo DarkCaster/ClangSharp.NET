@@ -27,7 +27,7 @@ if [[ -z $clang && ! -z $MSYSTEM ]]; then
 fi
 
 echo "Using clang binary at $clang"
-resource_dir=`clang -print-resource-dir`
+resource_dir=`clang -print-resource-dir 2>/dev/null || true`
 
 cmdline=()
 cmdline_cnt=0
@@ -82,7 +82,7 @@ while read line; do
   [[ $include_state == 1 && $line == "End of search list." ]] && include_state="2" && continue
   if [[ $include_state == 1 ]]; then
     trline=`echo "$line" | sed -e 's/^[ \t]*//'`
-    if [[ $trline =~ ^$resource_dir.*$ ]]; then
+    if [[ ! -z $resource_dir && $trline =~ ^$resource_dir.*$ ]]; then
       add_int_include "$trline"
       echo "found clang-internal system include: $trline"
     fi
