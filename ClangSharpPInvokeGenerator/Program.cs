@@ -112,6 +112,11 @@ namespace ClangSharpPInvokeGenerator
                     excludeFunctions = match.Value;
                 }
 
+                if (string.Equals(match.Key, "--otr") || string.Equals(match.Key, "--outToRef"))
+                {
+                    Extensions.outToRef = bool.Parse(match.Value);
+                }
+
                 if (string.Equals(match.Key, "--c") || string.Equals(match.Key, "--charToByte"))
                 {
                     Extensions.charToByte = bool.Parse(match.Value);

@@ -18,6 +18,7 @@ namespace ClangSharpPInvokeGenerator
     {
         public static volatile bool arch64bit=Environment.Is64BitProcess;
         public static volatile bool charToByte=false;
+        public static volatile bool outToRef=false;
         public static volatile bool fixNestedStructs = false;
         public static volatile bool arrayHelpers = false;
         public static volatile bool genDelegates = false;
@@ -231,7 +232,7 @@ namespace ClangSharpPInvokeGenerator
                     switch (pointee.kind)
                     {
                         case CXTypeKind.CXType_Pointer:
-                            tw.Write(pointee.IsPtrToConstChar() && clang.isConstQualifiedType(pointee) != 0 ? "string[]" : "out IntPtr");
+                            tw.Write(pointee.IsPtrToConstChar() && clang.isConstQualifiedType(pointee) != 0 ? "string[]" : (outToRef? "ref IntPtr" : "out IntPtr"));
                             break;
                         case CXTypeKind.CXType_FunctionProto:
                             tw.Write(clang.getTypeSpelling(cursorType).ToString());
@@ -246,7 +247,7 @@ namespace ClangSharpPInvokeGenerator
                             tw.Write(type.IsPtrToConstChar() ? "[MarshalAs(UnmanagedType.LPWStr)] string" : "IntPtr");
                             break;
                         default:
-                            CommonTypeHandling(pointee, tw, "out ");
+                            CommonTypeHandling(pointee, tw, outToRef ? "ref " : "out ");
                             break;
                     }
                     break;
